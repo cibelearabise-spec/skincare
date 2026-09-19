@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="pt-BR">
+ <head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260918-05-13efa67","C":{"Abril Fatface":"YACgEZbkUVE,0","Alfa Slab One":"YACgEYS9sJU,0","Anton":"YACgEcYqQ-A,0","Archivo":"YACgEZulLoA,0","Arial Narrow":"YAGyDvJ_4Ts,0","Arial Rounded MT Bold":"YAFcfoaHu-s,0","Arial":"YAGyDvJ_4Ts,0","Avenir Next":"YAFcfmNq6UY,0","Baloo 2":"YADK30bC6HQ,0","Bebas Neue":"YACgESME5ew,0","Bricolage Grotesque":"YAFyMcdwzpc,0","Broken Glyph":"YADZ-exUkv0,0","Canva Sans":"YAFdJjTk5UU,1","Caveat":"YALBs2ploWQ,0","Comic Sans MS":"YAFcfvtOAUY,1","Cormorant Garamond":"YAFdJhX-538,0","Courier New":"YAGzXiGs0_8,0","Courier Prime":"YAD1aFjegN8,0","DM Sans":"YAD1aU3sLnI,0","DM Serif Display":"YAD1aYG82rc,0","Forum":"YACgEcnnqB4,0","Fraunces":"YAFdJpU7Kkk,0","Georgia":"YAGzXkO0pEM,0","Ghost Mono":"YAHQutsX00Q,0","Hanken Grotesk":"YAFcfhwp99E,0","Helvetica Neue":"YAFcf6CtJfI,0","Helvetica":"YAFcf6CtJfI,0","IBM Plex Mono":"YAFdJkmvhGI,0","Impact":"YAFcfnjI7Vk,0","Instrument Serif":"YAHFeOnZNEk,0","Inter":"YAFdJvSyp_k,3","Iowan Old Style":"YAGNIFa8j9o,0","Jacques Francois":"YADK3zbC6RM,0","JetBrains Mono":"YAFdJksXcAk,0","Josefin Sans":"YAFdJjvw9Ps,0","Lato":"YAFdJuFCnaw,0","Libre Baskerville":"YACgEUFdPdA,0","Lobster":"YAD8SnSjSFI,0","Lora":"YACgEXvxf8Q,0","Merriweather":"YACgEXvHxxs,0","Montserrat":"YAFdtQi73Xs,0","Nunito":"YAFdJoNRMmU,1","Oleo Script":"YACgEQQ14jI,0","Oswald":"YACgEQY10lw,0","Pacifico":"YADLjORQ1u4,0","Phantom Sans":"YAFdJvgJ5TU,0","Playfair Display":"YAFdJhem5V8,1","Plus Jakarta Sans":"YAGvf3_u0_Q,0","Poppins":"YAFdJjbTu24,1","Press Start 2P":"YAFyGr-8pmQ,0","Quicksand":"YAFdJpYtCxE,1","Raleway":"YAFdJhmxbVQ,1","Roboto Slab":"YAFdJswIKAg,0","Rockwell":"YAFcfyVZnN0,0","Rye":"YACgEdQP21k,0","Segoe UI":"YAHNdRD1Klw,0","Source Sans 3":"YAG4lO1Mj10,0","Source Serif 4":"YACgEfdj394,0","Space Grotesk":"YADZ-dYEmhg,0","Space Mono":"YADW1-vpsoc,0","Times New Roman":"YAGzXW3gftg,0","Times":"YAGzXW3gftg,0","Trebuchet MS":"YAFcfrglpVA,0","UV Display":"YAEdVfSSpYo,0","UV Sans":"YAFdJvgJ5TU,0","Ubuntu":"YACgERDU--Q,0","Verdana":"YAGzXTctYtQ,0","Work Sans":"YAGXhLOKv44,0","Yellowtail":"YACgEYG4kG4,0","ui-monospace":"YAD1aFjegN8,0","ui-sans-serif":"YACkoD1yZN0,0"}}');</script><script src="/_sdk/83d6dfdadcd4750a.telemetry_sdk.js" integrity="sha512-XS4Dvzp6vbagZS9vFErihvr8aO3S0tH78KWUefn06fmL4WYqryBtZj/IOLITYj7dFA4gPVvPg1W/JB1DK3uLNQ=="></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skin Analysis</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Playfair+Display:wght@500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --ink: #07090e;
+      --line: rgba(255,255,255,.16);
+      --lilac: #e2d7ff;
+      --muted: #c9c5cf;
+      --panel: rgba(22,24,31,.78);
+      --shadow: 0 18px 42px rgba(0,0,0,.38);
+    }
+    * { box-sizing: border-box; }
+    html, body { width:100%; min-height:calc(100 * min(var(--vh, 1vh), 1vh)); margin:0; }
+    body { background:#020307; color:#fff; font-family:"DM Sans",sans-serif; }
+    button, input { font:inherit; }
+    button { cursor:pointer; }
+    button:focus-visible, input:focus-visible { outline:2px solid var(--lilac); outline-offset:3px; }
+
+    .app-wrapper {
+      width:100%;
+      min-height:calc(100 * min(var(--vh, 1vh), 1vh));
+      display:grid;
+      place-items:center;
+      background:radial-gradient(circle at 50% 8%,rgba(102,82,130,.28),transparent 31%),#020307;
+    }
+    .mobile-shell {
+      position:relative;
+      width:min(100%,410px);
+      min-height:calc(100 * min(var(--vh, 1vh), 1vh));
+      overflow:hidden;
+      background:var(--ink);
+      box-shadow:0 0 60px rgba(0,0,0,.5);
+    }
+    .view {
+      display:none;
+      min-height:calc(100 * min(var(--vh, 1vh), 1vh));
+      padding:46px 19px 104px;
+      animation:reveal .32s ease both;
+    }
+    .view.active { display:block; }
+    @keyframes reveal { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+    .home-view { position:relative; isolation:isolate; }
+    .home-background {
+      position:absolute; z-index:-3; inset:0; width:100%; height:100%;
+      object-fit:cover; object-position:57% center; filter:saturate(.82) contrast(1.05) brightness(.88);
+      transform:scale(1.02);
+    }
+    .home-shade {
+      position:absolute; z-index:-2; inset:0;
+      background:linear-gradient(90deg,rgba(4,6,11,.93),rgba(5,7,12,.54) 47%,rgba(5,7,12,.1)),
+                 linear-gradient(180deg,rgba(4,6,11,.52),transparent 30%,rgba(4,6,11,.93) 82%,#080a0e);
+      pointer-events:none;
+    }
+    .topbar, .view-header { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    .greeting-wrap { display:flex; align-items:center; gap:8px; }
+    .heading-line { margin:0; letter-spacing:-.035em; }
+    .profile-orb {
+      display:grid; place-items:center; width:25px; height:25px; border-radius:50%;
+      border:1px solid rgba(255,255,255,.32); background:linear-gradient(145deg,#cbdce1,#51606f);
+    }
+    .icon-control {
+      display:grid; place-items:center; width:39px; height:39px; color:#fff;
+      border:1px solid var(--line); border-radius:50%; background:rgba(11,13,18,.56);
+      backdrop-filter:blur(14px); transition:.2s ease;
+    }
+    .icon-control:hover { color:var(--lilac); border-color:var(--lilac); transform:translateY(-2px); }
+    .notification-popover {
+      position:absolute; z-index:6; top:88px; right:19px; width:190px; padding:12px 14px;
+      border:1px solid var(--line); border-radius:14px; background:rgba(18,20,28,.94);
+      box-shadow:var(--shadow); backdrop-filter:blur(16px); opacity:0; pointer-events:none;
+      transform:translateY(-7px); transition:.2s ease;
+    }
+    .notification-popover.show { opacity:1; pointer-events:auto; transform:translateY(0); }
+    .notification-popover p { margin:0; line-height:1.45; }
+
+    .intro { max-width:220px; margin-top:14px; }
+    .intro h1 { margin:0; letter-spacing:-.04em; line-height:1.3; }
+    .intro p { margin:4px 0 0; color:#ddd9e1; line-height:1.45; }
+
+    .glass-card {
+      border:1px solid var(--line); border-radius:21px; background:var(--panel);
+      box-shadow:0 13px 28px rgba(0,0,0,.25); backdrop-filter:blur(16px);
+    }
+    .scan-card { width:min(100%,265px); margin-top:18px; padding:11px 12px 12px; }
+    .beta-pill {
+      display:inline-flex; min-height:20px; align-items:center; padding:3px 10px; border-radius:999px;
+      border:1px solid rgba(255,255,255,.16); background:rgba(190,181,217,.17);
+    }
+    .scan-card h2 { margin:8px 0 1px; letter-spacing:-.04em; line-height:1.05; }
+    .scan-card p { margin:0; color:#c9c5ce; letter-spacing:-.02em; }
+    .scan-action {
+      display:inline-flex; align-items:center; gap:7px; min-height:32px; margin-top:10px; padding:5px 10px 5px 6px;
+      border:0; border-radius:999px; background:linear-gradient(90deg,#d9d0ed,#c9bce7); color:#211d29;
+      transition:.2s ease;
+    }
+    .scan-action:hover { transform:translateY(-2px); box-shadow:0 10px 18px rgba(0,0,0,.3); }
+    .scan-symbol { display:grid; place-items:center; width:21px; height:21px; border-radius:50%; background:rgba(62,55,78,.25); }
+
+    .lower-content { margin-top:88px; }
+    .search-strip {
+      display:flex; align-items:center; gap:10px; min-height:40px; padding:0 13px; border:1px solid var(--line);
+      border-radius:999px; background:rgba(13,15,20,.66); box-shadow:0 10px 25px rgba(0,0,0,.18); backdrop-filter:blur(16px);
+    }
+    .search-strip:focus-within { border-color:rgba(226,215,255,.85); }
+    .search-strip input { width:100%; border:0; outline:0; color:#fff; background:transparent; }
+    .search-strip input::placeholder { color:#d0cdd4; opacity:1; }
+    .section-header { display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin:14px 1px 9px; }
+    .section-header h2 { margin:0; letter-spacing:-.035em; }
+    .see-all { padding:0; border:0; color:#d3ced9; background:transparent; }
+    .see-all:hover { color:#fff; text-decoration:underline; }
+    .products-grid { display:grid; grid-template-columns:1fr 1fr; gap:9px; }
+    .product-card { position:relative; min-height:109px; overflow:hidden; border:1px solid rgba(255,255,255,.19); border-radius:17px; background:#292a32; box-shadow:0 10px 20px rgba(0,0,0,.2); transition:.2s ease; }
+    .product-card:hover { transform:translateY(-3px); }
+    .product-card.filtered-out { display:none; }
+    .product-card::after { position:absolute; inset:0; content:""; background:linear-gradient(0deg,rgba(5,6,9,.7),transparent 60%); pointer-events:none; }
+    .product-card img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    .product-name { position:absolute; z-index:1; left:10px; right:9px; bottom:9px; text-shadow:0 2px 9px #000; }
+
+    .view-header h1 { margin:0; text-align:center; letter-spacing:-.035em; flex:1; }
+    .header-spacer { width:39px; }
+    .analysis-view { background:radial-gradient(circle at 82% 8%,rgba(106,82,135,.31),transparent 30%),linear-gradient(155deg,#11111a,#06070b 72%); }
+    .analysis-photo { position:relative; height:275px; margin-top:27px; overflow:hidden; border-radius:24px; }
+    .analysis-photo img { width:100%; height:100%; object-fit:cover; object-position:center 28%; filter:brightness(.92) saturate(.8); }
+    .analysis-photo::after { position:absolute; inset:0; content:""; background:linear-gradient(0deg,rgba(8,10,15,.8),transparent 65%); }
+    .scan-line { position:absolute; z-index:2; left:10%; right:10%; top:48%; height:1px; background:linear-gradient(90deg,transparent,#e2d7ff,transparent); box-shadow:0 0 16px #e2d7ff; animation:scan 2.8s ease-in-out infinite; }
+    @keyframes scan { 0%,100% { transform:translateY(-80px); opacity:.4; } 50% { transform:translateY(80px); opacity:1; } }
+    .score-card { position:relative; margin-top:-19px; padding:22px 17px 18px; border-radius:22px; }
+    .score-card h2 { margin:0; font-family:"Playfair Display",serif; }
+    .score-card p { margin:5px 0 17px; color:#d1ced7; line-height:1.45; }
+    .score-row { display:flex; align-items:center; gap:13px; }
+    .score-value { display:flex; align-items:baseline; gap:4px; }
+    .score-value strong { font-size:34px; line-height:1; }
+    .score-bar { flex:1; height:8px; overflow:hidden; border-radius:99px; background:rgba(255,255,255,.13); }
+    .score-fill { width:72%; height:100%; border-radius:inherit; background:linear-gradient(90deg,#c5b5e8,#eee6ff); }
+
+    .routine-view, .catalog-view, .profile-view { background:radial-gradient(circle at 88% 4%,rgba(88,75,113,.26),transparent 31%),#08090e; }
+    .hero-panel { position:relative; min-height:152px; overflow:hidden; padding:18px; border-radius:23px; }
+    .hero-panel img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:.5; }
+    .hero-panel::after { position:absolute; inset:0; content:""; background:linear-gradient(90deg,rgba(8,9,14,.94),rgba(8,9,14,.35)); }
+    .hero-content { position:relative; z-index:1; max-width:190px; }
+    .hero-content h2 { margin:0 0 6px; letter-spacing:-.04em; }
+    .hero-content p { margin:0; color:#ddd9e4; line-height:1.4; }
+    .routine-list { display:grid; gap:10px; margin-top:15px; }
+    .routine-step { display:grid; grid-template-columns:54px 1fr auto; align-items:center; gap:11px; padding:9px; border-radius:18px; }
+    .routine-step img { width:54px; height:54px; border-radius:13px; object-fit:cover; }
+    .routine-copy h3, .routine-copy p { margin:0; }
+    .routine-copy p { margin-top:3px; color:#c7c3ce; line-height:1.35; }
+    .step-toggle { display:grid; place-items:center; width:31px; height:31px; border:1px solid rgba(226,215,255,.44); border-radius:50%; color:#e9e1ff; background:rgba(226,215,255,.1); }
+    .routine-step.is-done .step-toggle { color:#241d2c; background:#e2d7ff; }
+    .step-state-done { display:none; }
+    .routine-step.is-done .step-state-pending { display:none; }
+    .routine-step.is-done .step-state-done { display:inline; }
+
+    .catalog-search { margin-top:20px; }
+    .catalog-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:14px; }
+    .catalog-card { overflow:hidden; border-radius:18px; background:#1b1d25; border:1px solid var(--line); }
+    .catalog-card.filtered-out { display:none; }
+    .catalog-card img { width:100%; height:125px; display:block; object-fit:cover; }
+    .catalog-copy { padding:10px; }
+    .catalog-copy h3, .catalog-copy p { margin:0; }
+    .catalog-copy p { margin-top:3px; color:#c8c3ce; line-height:1.35; }
+    .catalog-tag { display:inline-block; margin-top:8px; padding:3px 7px; border-radius:99px; background:rgba(226,215,255,.13); color:#e3daf8; }
+
+    .profile-top { display:flex; align-items:center; gap:14px; margin:25px 0 18px; }
+    .profile-top img { width:78px; height:78px; object-fit:cover; border-radius:50%; border:2px solid rgba(226,215,255,.6); }
+    .profile-top h2, .profile-top p { margin:0; }
+    .profile-top p { margin-top:4px; color:#cec9d4; }
+    .profile-stat { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .stat-card { padding:15px; border-radius:18px; }
+    .stat-card strong, .stat-card span { display:block; }
+    .stat-card span { margin-top:4px; color:#cbc6d1; }
+    .preference-list { display:grid; gap:9px; margin-top:17px; }
+    .preference-row { display:flex; align-items:center; justify-content:space-between; padding:14px; border-radius:17px; }
+    .preference-row span { color:#d0cad8; }
+
+    .bottom-navigation {
+      position:absolute; z-index:10; left:50%; bottom:13px; display:flex; align-items:center; justify-content:space-between;
+      width:calc(100% - 38px); max-width:340px; padding:7px 12px; border:1px solid var(--line); border-radius:23px;
+      background:rgba(11,13,18,.84); box-shadow:0 14px 28px rgba(0,0,0,.35); backdrop-filter:blur(17px); transform:translateX(-50%);
+    }
+    .nav-button { display:grid; place-items:center; width:40px; height:34px; color:#d7d4dc; border:0; border-radius:12px; background:transparent; transition:.2s ease; }
+    .nav-button.active { color:#fff; background:rgba(226,215,255,.22); }
+    .nav-button:hover { color:#fff; }
+    @media (max-width:360px) { .view { padding-inline:15px; } .bottom-navigation { width:calc(100% - 28px); padding-inline:8px; } .nav-button { width:36px; } }
+  </style>
+  <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js" type="text/javascript"></script>
+  <script src="/_sdk/8de366929c5f3b48.data_sdk.js" type="text/javascript" integrity="sha512-TyQ8k8cZj66xe/aENmn6RyZpdOFZXbAo5+KBG3PeFM+Q4qMTHU8xAqmq4ADClNfPrstgQYV6OzZHwLTnElzB2g=="></script>
+  <script src="/_sdk/0ddbbee1c66b1212.editing_sdk.js" type="text/javascript" integrity="sha512-HQn5LM1yruQSbY78ATUril6QeOJ9xj7KqO64ltLtb4vBwI5Qv3/tloFFOndBPZTNZoeV5xKzuth5y6FTi9crsg=="></script>
+  <script src="/_sdk/765e1fea0cec97ce.resizing_sdk.js" type="text/javascript" integrity="sha512-IRTJnqww0+HQ5V/LlWEQrlD5SrYHaVvaeVoNe8HYQXoaguzUGheSd9+n9s6WOgaTcEH0g37DuINHZ9aqfzWjlw=="></script>
+ </head>
+ <body data-template-id="__page-root">
+  <div class="app-wrapper">
+   <main class="mobile-shell" aria-label="Aplicativo de análise de pele">
+    <section id="home-view" class="view home-view active" aria-label="Início">
+     <img data-template-id="home-hero-image" class="canva-image home-background" loading="lazy">
+     <div class="home-shade" aria-hidden="true"></div>
+     <header class="topbar">
+      <div class="greeting-wrap">
+       <p data-template-id="home-greeting" class="canva-text heading-line"></p><span class="profile-orb" aria-hidden="true"><i data-lucide="sparkle" width="14"></i></span>
+       <p data-template-id="home-name" class="canva-text heading-line"></p>
+      </div><button id="notification-button" class="icon-control" type="button" aria-label="Ver notificações" aria-expanded="false"><i data-lucide="bell" width="16"></i></button>
+     </header>
+     <aside id="notification-popover" class="notification-popover" aria-live="polite">
+      <p data-template-id="notification-text" class="canva-text"></p>
+     </aside>
+     <section class="intro">
+      <h1 data-template-id="home-headline" class="canva-text"></h1>
+      <p data-template-id="home-subheadline" class="canva-text"></p>
+     </section>
+     <article data-template-id="scan-card" class="canva-card glass-card scan-card">
+      <span data-template-id="scan-badge" class="canva-tag beta-pill"></span>
+      <h2 data-template-id="scan-card-title" class="canva-text"></h2>
+      <p data-template-id="scan-card-description" class="canva-text"></p><button id="scan-button" data-template-id="scan-button" class="canva-button scan-action" type="button"> <span class="scan-symbol" aria-hidden="true"><i data-lucide="scan-face" width="13"></i></span> <span data-template-id="scan-button-label" class="canva-text"></span> <i data-lucide="chevron-right" width="14" aria-hidden="true"></i> </button>
+     </article>
+     <section class="lower-content" aria-label="Produtos recomendados">
+      <label class="search-strip" for="home-product-search"> <i data-lucide="search" width="14" aria-hidden="true"></i> <input id="home-product-search" data-template-id="search-label" class="canva-input" type="search" autocomplete="off"> </label>
+      <div class="section-header">
+       <h2 data-template-id="solutions-heading" class="canva-text"></h2><button id="see-all-button" data-template-id="see-all-label" class="canva-link see-all" type="button"></button>
+      </div>
+      <div class="products-grid">
+       <article data-template-id="product-one-card" class="canva-card product-card home-product" data-search="serum renovador renewal">
+        <img data-template-id="product-one-image" class="canva-image" loading="lazy"> <span data-template-id="product-one-name" class="canva-text product-name"></span>
+       </article>
+       <article data-template-id="product-two-card" class="canva-card product-card home-product" data-search="creme barreira barrier">
+        <img data-template-id="product-two-image" class="canva-image" loading="lazy"> <span data-template-id="product-two-name" class="canva-text product-name"></span>
+       </article>
+      </div>
+     </section>
+    </section>
+    <section id="analysis-view" class="view analysis-view" aria-label="Resultado da análise">
+     <header class="view-header">
+      <button id="back-button" class="icon-control" type="button" aria-label="Voltar para início"><i data-lucide="arrow-left" width="17"></i></button>
+      <h1 data-template-id="analysis-screen-title" class="canva-text"></h1><span class="header-spacer" aria-hidden="true"></span>
+     </header>
+     <article data-template-id="analysis-photo-card" class="canva-card glass-card analysis-photo">
+      <img data-template-id="analysis-face-image" class="canva-image" loading="lazy"> <span class="scan-line" aria-hidden="true"></span>
+     </article>
+     <section data-template-id="score-card" class="canva-panel glass-card score-card">
+      <h2 data-template-id="score-title" class="canva-text"></h2>
+      <p data-template-id="score-description" class="canva-text"></p>
+      <div class="score-row">
+       <div class="score-value"><strong>72</strong><span data-template-id="score-label" class="canva-text"></span>
+       </div>
+       <div class="score-bar" aria-label="72 por cento">
+        <div class="score-fill"></div>
+       </div>
+      </div>
+     </section>
+    </section>
+    <section id="routine-view" class="view routine-view" aria-label="Rotina">
+     <header class="view-header">
+      <span class="header-spacer" aria-hidden="true"></span>
+      <h1 data-template-id="routine-screen-title" class="canva-text"></h1><span class="header-spacer" aria-hidden="true"></span>
+     </header>
+     <article data-template-id="routine-hero-card" class="canva-card glass-card hero-panel">
+      <img data-template-id="routine-hero-image" class="canva-image" loading="lazy">
+      <div class="hero-content">
+       <h2 data-template-id="routine-hero-title" class="canva-text"></h2>
+       <p data-template-id="routine-hero-description" class="canva-text"></p>
+      </div>
+     </article>
+     <div class="section-header">
+      <h2 data-template-id="routine-list-heading" class="canva-text"></h2>
+     </div>
+     <section class="routine-list" aria-label="Etapas da rotina">
+      <article data-template-id="habit-one-card" class="canva-card glass-card routine-step">
+       <img data-template-id="habit-one-image" class="canva-image" loading="lazy">
+       <div class="routine-copy">
+        <h3 data-template-id="habit-one-title" class="canva-text"></h3>
+        <p data-template-id="habit-one-description" class="canva-text"></p>
+       </div><button class="step-toggle" type="button" aria-label="Marcar limpeza como concluída" aria-pressed="false"><i class="step-state-pending" data-lucide="circle" width="16"></i><i class="step-state-done" data-lucide="check" width="16"></i></button>
+      </article>
+      <article data-template-id="habit-two-card" class="canva-card glass-card routine-step">
+       <img data-template-id="habit-two-image" class="canva-image" loading="lazy">
+       <div class="routine-copy">
+        <h3 data-template-id="habit-two-title" class="canva-text"></h3>
+        <p data-template-id="habit-two-description" class="canva-text"></p>
+       </div><button class="step-toggle" type="button" aria-label="Marcar tratamento como concluído" aria-pressed="false"><i class="step-state-pending" data-lucide="circle" width="16"></i><i class="step-state-done" data-lucide="check" width="16"></i></button>
+      </article>
+      <article data-template-id="habit-three-card" class="canva-card glass-card routine-step">
+       <img data-template-id="habit-three-image" class="canva-image" loading="lazy">
+       <div class="routine-copy">
+        <h3 data-template-id="habit-three-title" class="canva-text"></h3>
+        <p data-template-id="habit-three-description" class="canva-text"></p>
+       </div><button class="step-toggle" type="button" aria-label="Marcar hidratação como concluída" aria-pressed="false"><i class="step-state-pending" data-lucide="circle" width="16"></i><i class="step-state-done" data-lucide="check" width="16"></i></button>
+      </article>
+     </section>
+    </section>
+    <section id="catalog-view" class="view catalog-view" aria-label="Produtos">
+     <header class="view-header">
+      <span class="header-spacer" aria-hidden="true"></span>
+      <h1 data-template-id="catalog-screen-title" class="canva-text"></h1><span class="header-spacer" aria-hidden="true"></span>
+     </header><label class="search-strip catalog-search" for="catalog-search"> <i data-lucide="search" width="14" aria-hidden="true"></i> <input id="catalog-search" data-template-id="catalog-search-label" class="canva-input" type="search" autocomplete="off"> </label>
+     <section class="catalog-grid" aria-label="Catálogo de produtos">
+      <article data-template-id="catalog-one-card" class="canva-card catalog-card catalog-product" data-search="serum renovador renewal">
+       <img data-template-id="catalog-one-image" class="canva-image" loading="lazy">
+       <div class="catalog-copy">
+        <h3 data-template-id="catalog-one-title" class="canva-text"></h3>
+        <p data-template-id="catalog-one-description" class="canva-text"></p><span data-template-id="catalog-one-tag" class="canva-tag catalog-tag"></span>
+       </div>
+      </article>
+      <article data-template-id="catalog-two-card" class="canva-card catalog-card catalog-product" data-search="creme barreira hidratação barrier">
+       <img data-template-id="catalog-two-image" class="canva-image" loading="lazy">
+       <div class="catalog-copy">
+        <h3 data-template-id="catalog-two-title" class="canva-text"></h3>
+        <p data-template-id="catalog-two-description" class="canva-text"></p><span data-template-id="catalog-two-tag" class="canva-tag catalog-tag"></span>
+       </div>
+      </article>
+      <article data-template-id="catalog-three-card" class="canva-card catalog-card catalog-product" data-search="toner tônico brilho">
+       <img data-template-id="catalog-three-image" class="canva-image" loading="lazy">
+       <div class="catalog-copy">
+        <h3 data-template-id="catalog-three-title" class="canva-text"></h3>
+        <p data-template-id="catalog-three-description" class="canva-text"></p><span data-template-id="catalog-three-tag" class="canva-tag catalog-tag"></span>
+       </div>
+      </article>
+      <article data-template-id="catalog-four-card" class="canva-card catalog-card catalog-product" data-search="limpeza cleanser gel">
+       <img data-template-id="catalog-four-image" class="canva-image" loading="lazy">
+       <div class="catalog-copy">
+        <h3 data-template-id="catalog-four-title" class="canva-text"></h3>
+        <p data-template-id="catalog-four-description" class="canva-text"></p><span data-template-id="catalog-four-tag" class="canva-tag catalog-tag"></span>
+       </div>
+      </article>
+     </section>
+    </section>
+    <section id="profile-view" class="view profile-view" aria-label="Perfil">
+     <header class="view-header">
+      <span class="header-spacer" aria-hidden="true"></span>
+      <h1 data-template-id="profile-screen-title" class="canva-text"></h1><span class="header-spacer" aria-hidden="true"></span>
+     </header>
+     <section class="profile-top">
+      <img data-template-id="profile-avatar" class="canva-image" loading="lazy">
+      <div>
+       <h2 data-template-id="profile-name" class="canva-text"></h2>
+       <p data-template-id="profile-subtitle" class="canva-text"></p>
+      </div>
+     </section>
+     <section class="profile-stat">
+      <article data-template-id="profile-stat-one-card" class="canva-card glass-card stat-card"><strong data-template-id="profile-stat-one-value" class="canva-text"></strong><span data-template-id="profile-stat-one-label" class="canva-text"></span>
+      </article>
+      <article data-template-id="profile-stat-two-card" class="canva-card glass-card stat-card"><strong data-template-id="profile-stat-two-value" class="canva-text"></strong><span data-template-id="profile-stat-two-label" class="canva-text"></span>
+      </article>
+     </section>
+     <div class="section-header">
+      <h2 data-template-id="profile-preferences-heading" class="canva-text"></h2>
+     </div>
+     <section class="preference-list" aria-label="Preferências">
+      <article data-template-id="preference-one-card" class="canva-card glass-card preference-row"><span data-template-id="preference-one-label" class="canva-text"></span><i data-lucide="chevron-right" width="16"></i>
+      </article>
+      <article data-template-id="preference-two-card" class="canva-card glass-card preference-row"><span data-template-id="preference-two-label" class="canva-text"></span><i data-lucide="chevron-right" width="16"></i>
+      </article>
+      <article data-template-id="preference-three-card" class="canva-card glass-card preference-row"><span data-template-id="preference-three-label" class="canva-text"></span><i data-lucide="chevron-right" width="16"></i>
+      </article>
+     </section>
+    </section>
+    <nav class="bottom-navigation" aria-label="Navegação principal">
+     <button class="nav-button active" type="button" data-view="home-view" aria-label="Início" aria-pressed="true"><i data-lucide="house" width="16"></i></button> <button class="nav-button" type="button" data-view="analysis-view" aria-label="Análise" aria-pressed="false"><i data-lucide="scan-face" width="16"></i></button> <button class="nav-button" type="button" data-view="routine-view" aria-label="Rotina" aria-pressed="false"><i data-lucide="sparkles" width="16"></i></button> <button class="nav-button" type="button" data-view="catalog-view" aria-label="Produtos" aria-pressed="false"><i data-lucide="flask-conical" width="16"></i></button> <button class="nav-button" type="button" data-view="profile-view" aria-label="Perfil" aria-pressed="false"><i data-lucide="user-round" width="16"></i></button>
+    </nav>
+   </main>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      lucide.createIcons();
+
+      const views = document.querySelectorAll(".view");
+      const navButtons = document.querySelectorAll(".nav-button");
+      const notificationButton = document.getElementById("notification-button");
+      const notificationPopover = document.getElementById("notification-popover");
+
+      function showView(viewId) {
+        views.forEach(function(view) { view.classList.toggle("active", view.id === viewId); });
+        navButtons.forEach(function(button) {
+          const active = button.dataset.view === viewId;
+          button.classList.toggle("active", active);
+          button.setAttribute("aria-pressed", String(active));
+        });
+        notificationPopover.classList.remove("show");
+        notificationButton.setAttribute("aria-expanded", "false");
+      }
+
+      document.getElementById("scan-button").addEventListener("click", function () { showView("analysis-view"); });
+      document.getElementById("back-button").addEventListener("click", function () { showView("home-view"); });
+
+      navButtons.forEach(function(button) {
+        button.addEventListener("click", function() { showView(button.dataset.view); });
+      });
+
+      notificationButton.addEventListener("click", function () {
+        const visible = notificationPopover.classList.toggle("show");
+        notificationButton.setAttribute("aria-expanded", String(visible));
+      });
+
+      function attachFilter(inputId, cardSelector) {
+        const input = document.getElementById(inputId);
+        const cards = document.querySelectorAll(cardSelector);
+        input.addEventListener("input", function () {
+          const query = input.value.trim().toLowerCase();
+          cards.forEach(function(card) {
+            card.classList.toggle("filtered-out", !card.dataset.search.includes(query));
+          });
+        });
+      }
+
+      attachFilter("home-product-search", ".home-product");
+      attachFilter("catalog-search", ".catalog-product");
+
+      document.getElementById("see-all-button").addEventListener("click", function () {
+        const input = document.getElementById("home-product-search");
+        input.value = "";
+        document.querySelectorAll(".home-product").forEach(function(card) { card.classList.remove("filtered-out"); });
+        input.focus();
+      });
+
+      document.querySelectorAll(".step-toggle").forEach(function(button) {
+        button.addEventListener("click", function () {
+          const step = button.closest(".routine-step");
+          const done = step.classList.toggle("is-done");
+          button.setAttribute("aria-pressed", String(done));
+        });
+      });
+    });
+  </script>
+ </body>
+</html>
