@@ -46,7 +46,6 @@
 
     .home-view { position:relative; isolation:isolate; }
     
-    /* FOTO 100% NÍTIDA E SEM NENHUMA ESCURIDÃO/SOMBRA */
     .home-background {
       position:absolute; z-index:-3; top:0; right:0; width:70%; height:100%;
       object-fit:cover; object-position:85% 20%;
@@ -97,7 +96,7 @@
     .scan-action:hover { transform:translateY(-2px); box-shadow:0 10px 18px rgba(0,0,0,.3); }
     .scan-symbol { display:grid; place-items:center; width:20px; height:20px; border-radius:50%; background:rgba(55,48,72,.2); }
 
-    .lower-content { margin-top:50px; }
+    .lower-content { margin-top:32px; }
     .search-strip {
       display:flex; align-items:center; gap:10px; min-height:40px; padding:0 13px; border:1px solid var(--line);
       border-radius:999px; background:rgba(15,17,24,.85); box-shadow:0 10px 25px rgba(0,0,0,.3); backdrop-filter:blur(16px);
@@ -111,8 +110,9 @@
     .see-all { padding:0; border:0; color:#cbc5d2; background:transparent; font-size: 12px; }
     .see-all:hover { color:#fff; text-decoration:underline; }
     
+    /* QUADROS DE PRODUTOS MAIORES */
     .products-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-    .product-card { position:relative; min-height:110px; overflow:hidden; border:1px solid rgba(255,255,255,.16); border-radius:16px; background:#1b1d25; box-shadow:0 10px 20px rgba(0,0,0,.3); transition:.2s ease; }
+    .product-card { position:relative; min-height:140px; overflow:hidden; border:1px solid rgba(255,255,255,.16); border-radius:16px; background:#1b1d25; box-shadow:0 10px 20px rgba(0,0,0,.3); transition:.2s ease; }
     .product-card:hover { transform:translateY(-3px); }
     .product-card.filtered-out { display:none; }
     .product-card::after { position:absolute; inset:0; content:""; background:linear-gradient(0deg,rgba(5,6,9,.85),transparent 60%); pointer-events:none; }
@@ -195,7 +195,6 @@
     
     <!-- TELA INICIAL (HOME) -->
     <section id="home-view" class="view home-view active" aria-label="Início">
-     <!-- Imagem puxada diretamente do repositório GitHub sem máscara escura -->
      <img class="home-background" src="Captura de tela 2026-09-19 150701.png" alt="Modelo de fundo" loading="lazy">
      
      <header class="topbar">
@@ -243,9 +242,10 @@
         <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=300&q=80" alt="Sérum" loading="lazy">
         <span class="product-name">Brightening Facial Soap</span>
        </article>
-       <article class="product-card home-product" data-search="face cream">
-        <img src="https://images.unsplash.com/photo-1608248597359-974052349079?auto=format&fit=crop&w=300&q=80" alt="Creme" loading="lazy">
-        <span class="product-name">FACE CREAM</span>
+       <!-- Segundo quadro utilizando o arquivo serum.png do repositório -->
+       <article class="product-card home-product" data-search="face cream serum">
+        <img src="serum.png" alt="Sérum Facial" loading="lazy">
+        <span class="product-name">FACE SERUM</span>
        </article>
       </div>
      </section>
