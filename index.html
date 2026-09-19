@@ -46,18 +46,11 @@
 
     .home-view { position:relative; isolation:isolate; }
     
-    /* IMAGEM DO REPOSITÓRIO FIXADA NA LATERAL DIREITA (Rosto totalmente livre) */
+    /* FOTO 100% NÍTIDA E SEM NENHUMA ESCURIDÃO/SOMBRA */
     .home-background {
       position:absolute; z-index:-3; top:0; right:0; width:70%; height:100%;
       object-fit:cover; object-position:85% 20%;
-    }
-    
-   /* FUNDO ESCURO MAIS SUAVE PARA EXIBIR A FOTO COM CLAREZA */
-    .home-shade {
-      position:absolute; z-index:-2; inset:0;
-      background:linear-gradient(90deg, rgba(7,9,14,0.95) 45%, rgba(7,9,14,0.65) 70%, rgba(7,9,14,0.2) 100%),
-                 linear-gradient(180deg, rgba(7,9,14,0.3) 0%, transparent 30%, rgba(7,9,14,0.6) 85%, rgba(7,9,14,0.9) 100%);
-      pointer-events:none;
+      opacity: 1;
     }
 
     .topbar, .view-header { display:flex; align-items:center; justify-content:space-between; gap:12px; }
@@ -82,14 +75,14 @@
     .notification-popover.show { opacity:1; pointer-events:auto; transform:translateY(0); }
     .notification-popover p { margin:0; line-height:1.45; font-size: 13px; }
 
-    .intro { max-width:210px; margin-top:12px; }
+    .intro { max-width:210px; margin-top:20px; }
     .intro h1 { margin:0; letter-spacing:-.04em; line-height:1.2; font-size: 19px; font-weight: 500; color: #dcd7e3; }
 
     .glass-card {
       border:1px solid var(--line); border-radius:21px; background:var(--panel);
       box-shadow:0 13px 28px rgba(0,0,0,.35); backdrop-filter:blur(16px);
     }
-    .scan-card { width:min(100%,255px); margin-top:12px; padding:12px 14px 14px; }
+    .scan-card { width:min(100%,255px); margin-top:24px; padding:12px 14px 14px; }
     .beta-pill {
       display:inline-flex; min-height:20px; align-items:center; padding:3px 10px; border-radius:999px;
       border:1px solid rgba(255,255,255,.16); background:rgba(190,181,217,.15); font-size: 11px;
@@ -97,14 +90,14 @@
     .scan-card h2 { margin:6px 0 1px; letter-spacing:-.04em; line-height:1.1; font-size: 15px; }
     .scan-card p { margin:0; color:#c5c0cc; letter-spacing:-.02em; font-size: 12px; }
     .scan-action {
-      display:inline-flex; align-items:center; gap:7px; min-height:30px; margin-top:8px; padding:4px 10px 4px 6px;
+      display:inline-flex; align-items:center; gap:7px; min-height:30px; margin-top:30px; padding:4px 10px 4px 6px;
       border:0; border-radius:999px; background:linear-gradient(90deg,#ded4f5,#c8bce4); color:#1d1827;
       transition:.2s ease; font-weight: 500; font-size: 12px;
     }
     .scan-action:hover { transform:translateY(-2px); box-shadow:0 10px 18px rgba(0,0,0,.3); }
     .scan-symbol { display:grid; place-items:center; width:20px; height:20px; border-radius:50%; background:rgba(55,48,72,.2); }
 
-    .lower-content { margin-top:16px; }
+    .lower-content { margin-top:32px; }
     .search-strip {
       display:flex; align-items:center; gap:10px; min-height:40px; padding:0 13px; border:1px solid var(--line);
       border-radius:999px; background:rgba(15,17,24,.85); box-shadow:0 10px 25px rgba(0,0,0,.3); backdrop-filter:blur(16px);
@@ -118,7 +111,6 @@
     .see-all { padding:0; border:0; color:#cbc5d2; background:transparent; font-size: 12px; }
     .see-all:hover { color:#fff; text-decoration:underline; }
     
-    /* QUADROS DE PRODUTOS DESLOCADOS MAIS PARA BAIXO */
     .products-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
     .product-card { position:relative; min-height:110px; overflow:hidden; border:1px solid rgba(255,255,255,.16); border-radius:16px; background:#1b1d25; box-shadow:0 10px 20px rgba(0,0,0,.3); transition:.2s ease; }
     .product-card:hover { transform:translateY(-3px); }
@@ -203,9 +195,8 @@
     
     <!-- TELA INICIAL (HOME) -->
     <section id="home-view" class="view home-view active" aria-label="Início">
-     <!-- Imagem puxada diretamente do repositório GitHub -->
+     <!-- Imagem puxada diretamente do repositório GitHub sem máscara escura -->
      <img class="home-background" src="Captura de tela 2026-09-19 150701.png" alt="Modelo de fundo" loading="lazy">
-     <div class="home-shade" aria-hidden="true"></div>
      
      <header class="topbar">
       <div class="greeting-wrap">
