@@ -39,7 +39,8 @@
     .view {
       display:none;
       min-height:calc(100 * min(var(--vh, 1vh), 1vh));
-      padding:46px 19px 104px;
+      /* Aumentado o espaçamento superior para afastar do topo */
+      padding:58px 19px 104px;
       animation:reveal .32s ease both;
     }
     .view.active { display:block; }
@@ -48,13 +49,14 @@
     .home-view { position:relative; isolation:isolate; }
     .home-background {
       position:absolute; z-index:-3; inset:0; width:100%; height:100%;
-      object-fit:cover; object-position:57% center; filter:saturate(.82) contrast(1.05) brightness(.88);
-      transform:scale(1.02);
+      /* Ajustado para mostrar o rosto da mulher perfeitamente igual à referência */
+      object-fit:cover; object-position:72% 35%; filter:saturate(.85) contrast(1.05) brightness(.9);
+      transform:scale(1.05);
     }
     .home-shade {
       position:absolute; z-index:-2; inset:0;
-      background:linear-gradient(90deg,rgba(4,6,11,.93),rgba(5,7,12,.54) 47%,rgba(5,7,12,.1)),
-                 linear-gradient(180deg,rgba(4,6,11,.52),transparent 30%,rgba(4,6,11,.93) 82%,#080a0e);
+      background:linear-gradient(90deg,rgba(4,6,11,.95),rgba(5,7,12,.65) 52%,rgba(5,7,12,.2)),
+                 linear-gradient(180deg,rgba(4,6,11,.35),transparent 25%,rgba(4,6,11,.92) 80%,#080a0e);
       pointer-events:none;
     }
     .topbar, .view-header { display:flex; align-items:center; justify-content:space-between; gap:12px; }
@@ -71,7 +73,7 @@
     }
     .icon-control:hover { color:var(--lilac); border-color:var(--lilac); transform:translateY(-2px); }
     .notification-popover {
-      position:absolute; z-index:6; top:88px; right:19px; width:190px; padding:12px 14px;
+      position:absolute; z-index:6; top:98px; right:19px; width:190px; padding:12px 14px;
       border:1px solid var(--line); border-radius:14px; background:rgba(18,20,28,.94);
       box-shadow:var(--shadow); backdrop-filter:blur(16px); opacity:0; pointer-events:none;
       transform:translateY(-7px); transition:.2s ease;
@@ -79,14 +81,14 @@
     .notification-popover.show { opacity:1; pointer-events:auto; transform:translateY(0); }
     .notification-popover p { margin:0; line-height:1.45; }
 
-    .intro { max-width:220px; margin-top:14px; }
+    .intro { max-width:240px; margin-top:20px; }
     .intro h1 { margin:0; letter-spacing:-.04em; line-height:1.3; font-size: 22px; font-weight: 500; color: #ddd9e4; }
 
     .glass-card {
       border:1px solid var(--line); border-radius:21px; background:var(--panel);
       box-shadow:0 13px 28px rgba(0,0,0,.25); backdrop-filter:blur(16px);
     }
-    .scan-card { width:min(100%,265px); margin-top:18px; padding:11px 12px 12px; }
+    .scan-card { width:min(100%,280px); margin-top:22px; padding:13px 14px 14px; }
     .beta-pill {
       display:inline-flex; min-height:20px; align-items:center; padding:3px 10px; border-radius:999px;
       border:1px solid rgba(255,255,255,.16); background:rgba(190,181,217,.17); font-size: 12px;
@@ -94,30 +96,30 @@
     .scan-card h2 { margin:8px 0 1px; letter-spacing:-.04em; line-height:1.05; font-size: 18px; }
     .scan-card p { margin:0; color:#c9c5ce; letter-spacing:-.02em; }
     .scan-action {
-      display:inline-flex; align-items:center; gap:7px; min-height:32px; margin-top:10px; padding:5px 10px 5px 6px;
+      display:inline-flex; align-items:center; gap:7px; min-height:32px; margin-top:12px; padding:5px 10px 5px 6px;
       border:0; border-radius:999px; background:linear-gradient(90deg,#d9d0ed,#c9bce7); color:#211d29;
       transition:.2s ease; font-weight: 500;
     }
     .scan-action:hover { transform:translateY(-2px); box-shadow:0 10px 18px rgba(0,0,0,.3); }
     .scan-symbol { display:grid; place-items:center; width:21px; height:21px; border-radius:50%; background:rgba(62,55,78,.25); }
 
-    .lower-content { margin-top:40px; }
+    .lower-content { margin-top:36px; }
     .search-strip {
-      display:flex; align-items:center; gap:10px; min-height:40px; padding:0 13px; border:1px solid var(--line);
+      display:flex; align-items:center; gap:10px; min-height:42px; padding:0 13px; border:1px solid var(--line);
       border-radius:999px; background:rgba(13,15,20,.66); box-shadow:0 10px 25px rgba(0,0,0,.18); backdrop-filter:blur(16px);
     }
     .search-strip:focus-within { border-color:rgba(226,215,255,.85); }
     .search-strip input { width:100%; border:0; outline:0; color:#fff; background:transparent; }
     .search-strip input::placeholder { color:#d0cdd4; opacity:1; }
-    .section-header { display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin:14px 1px 9px; }
+    .section-header { display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin:16px 1px 10px; }
     .section-header h2 { margin:0; letter-spacing:-.035em; font-size: 16px; font-weight: 500; }
     .see-all { padding:0; border:0; color:#d3ced9; background:transparent; font-size: 13px; }
     .see-all:hover { color:#fff; text-decoration:underline; }
-    .products-grid { display:grid; grid-template-columns:1fr 1fr; gap:9px; }
-    .product-card { position:relative; min-height:109px; overflow:hidden; border:1px solid rgba(255,255,255,.19); border-radius:17px; background:#292a32; box-shadow:0 10px 20px rgba(0,0,0,.2); transition:.2s ease; }
+    .products-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+    .product-card { position:relative; min-height:115px; overflow:hidden; border:1px solid rgba(255,255,255,.19); border-radius:17px; background:#292a32; box-shadow:0 10px 20px rgba(0,0,0,.2); transition:.2s ease; }
     .product-card:hover { transform:translateY(-3px); }
     .product-card.filtered-out { display:none; }
-    .product-card::after { position:absolute; inset:0; content:""; background:linear-gradient(0deg,rgba(5,6,9,.7),transparent 60%); pointer-events:none; }
+    .product-card::after { position:absolute; inset:0; content:""; background:linear-gradient(0deg,rgba(5,6,9,.75),transparent 60%); pointer-events:none; }
     .product-card img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
     .product-name { position:absolute; z-index:1; left:10px; right:9px; bottom:9px; text-shadow:0 2px 9px #000; font-size: 12px; font-weight: 500; }
 
@@ -197,7 +199,7 @@
     
     <!-- TELA INICIAL (HOME) -->
     <section id="home-view" class="view home-view active" aria-label="Início">
-     <!-- Imagem de fundo garantida via link estável -->
+     <!-- Imagem de fundo com posicionamento ajustado para o rosto aparecer -->
      <img class="home-background" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80" alt="Fundo de pele" loading="lazy">
      <div class="home-shade" aria-hidden="true"></div>
      
