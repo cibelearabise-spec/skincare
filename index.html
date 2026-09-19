@@ -7,10 +7,10 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Playfair+Display:wght@500;600&amp;display=swap" rel="stylesheet">
   <style>
     :root {
-      --ink: #0b0d13;
+      --ink: #07090e;
       --line: rgba(255,255,255,.14);
       --lilac: #dcd0ff;
-      --panel: rgba(18,20,28,.85);
+      --panel: rgba(18,20,28,.88);
       --shadow: 0 18px 42px rgba(0,0,0,.5);
     }
     * { box-sizing: border-box; }
@@ -46,18 +46,17 @@
 
     .home-view { position:relative; isolation:isolate; }
     
-    /* IMAGEM DA MODELO FIXADA E ISOLADA À DIREITA (Rosto totalmente livre) */
+    /* IMAGEM DO REPOSITÓRIO FIXADA NA LATERAL DIREITA (Rosto totalmente livre) */
     .home-background {
-      position:absolute; z-index:-3; top:0; right:0; width:75%; height:100%;
-      object-fit:cover; object-position:88% 20%;
-      filter:brightness(1.02) contrast(1.05);
+      position:absolute; z-index:-3; top:0; right:0; width:70%; height:100%;
+      object-fit:cover; object-position:85% 20%;
     }
     
-    /* GRADIENTE FORTE À ESQUERDA PARA COBRIR O FUNDO E DEIXAR O TEXTO 100% LEGÍVEL */
+    /* FUNDO ESCURO SÓLIDO À ESQUERDA PARA GARANTIR LEVEZA E ZERO INTERFERÊNCIA NO ROSTO */
     .home-shade {
       position:absolute; z-index:-2; inset:0;
-      background:linear-gradient(90deg, #07090e 52%, rgba(7,9,14,0.92) 70%, rgba(7,9,14,0.2) 100%),
-                 linear-gradient(180deg, rgba(7,9,14,0.4) 0%, transparent 20%, rgba(7,9,14,0.95) 85%, #07090e 100%);
+      background:linear-gradient(90deg, #07090e 50%, rgba(7,9,14,0.92) 68%, rgba(7,9,14,0.15) 100%),
+                 linear-gradient(180deg, rgba(7,9,14,0.5) 0%, transparent 25%, rgba(7,9,14,0.95) 85%, #07090e 100%);
       pointer-events:none;
     }
 
@@ -119,7 +118,7 @@
     .see-all { padding:0; border:0; color:#cbc5d2; background:transparent; font-size: 12px; }
     .see-all:hover { color:#fff; text-decoration:underline; }
     
-    /* PRODUTOS DESLOCADOS MAIS PARA BAIXO E ORGANIZADOS */
+    /* QUADROS DE PRODUTOS DESLOCADOS MAIS PARA BAIXO */
     .products-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
     .product-card { position:relative; min-height:110px; overflow:hidden; border:1px solid rgba(255,255,255,.16); border-radius:16px; background:#1b1d25; box-shadow:0 10px 20px rgba(0,0,0,.3); transition:.2s ease; }
     .product-card:hover { transform:translateY(-3px); }
@@ -204,8 +203,8 @@
     
     <!-- TELA INICIAL (HOME) -->
     <section id="home-view" class="view home-view active" aria-label="Início">
-     <!-- Modelo fixada estritamente no fundo direito, deixando o rosto 100% visível -->
-     <img class="home-background" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1000&q=85" alt="Fundo de pele" loading="lazy">
+     <!-- Imagem puxada diretamente do repositório GitHub -->
+     <img class="home-background" src="Captura de tela 2026-09-19 150701.png" alt="Modelo de fundo" loading="lazy">
      <div class="home-shade" aria-hidden="true"></div>
      
      <header class="topbar">
@@ -269,7 +268,7 @@
       <span class="header-spacer" aria-hidden="true"></span>
      </header>
      <article class="glass-card analysis-photo">
-      <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1000&q=85" alt="Análise de rosto" loading="lazy">
+      <img src="Captura de tela 2026-09-19 150701.png" alt="Análise de rosto" loading="lazy">
       <span class="scan-line" aria-hidden="true"></span>
      </article>
      <section class="glass-card score-card">
@@ -347,7 +346,7 @@
       <span class="header-spacer" aria-hidden="true"></span>
      </header>
      <section class="profile-top">
-      <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80" alt="Avatar" loading="lazy">
+      <img src="Captura de tela 2026-09-19 150701.png" alt="Avatar" loading="lazy">
       <div>
        <h2>Margo</h2>
        <p>Tipo de Pele: mista</p>
