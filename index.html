@@ -11,7 +11,7 @@
       --line: rgba(255,255,255,.16);
       --lilac: #e2d7ff;
       --muted: #c9c5cf;
-      --panel: rgba(22,24,31,.72);
+      --panel: rgba(22,24,31,.65);
       --shadow: 0 18px 42px rgba(0,0,0,.38);
     }
     * { box-sizing: border-box; }
@@ -48,15 +48,15 @@
     .home-view { position:relative; isolation:isolate; }
     .home-background {
       position:absolute; z-index:-3; inset:0; width:100%; height:100%;
-      /* Posicionamento exato para o rosto da modelo aparecer no canto superior direito */
-      object-fit:cover; object-position:80% 25%;
-      filter:saturate(.9) contrast(1.05) brightness(1);
+      /* Posicionamento exato para focar no rosto da modelo no lado direito */
+      object-fit:cover; object-position:85% 25%;
+      filter:saturate(.95) contrast(1.05) brightness(1.05);
     }
     .home-shade {
       position:absolute; z-index:-2; inset:0;
-      /* Gradiente mais suave para deixar a modelo visível ao fundo */
-      background:linear-gradient(90deg,rgba(4,6,11,.88),rgba(5,7,12,.45) 55%,rgba(5,7,12,.15)),
-                 linear-gradient(180deg,rgba(4,6,11,.2),transparent 30%,rgba(4,6,11,.85) 85%,#080a0e);
+      /* Gradiente mais leve para garantir que a modelo apareça bem nítida */
+      background:linear-gradient(90deg,rgba(4,6,11,.82),rgba(5,7,12,.35) 60%,rgba(5,7,12,.1)),
+                 linear-gradient(180deg,rgba(4,6,11,.15),transparent 35%,rgba(4,6,11,.82) 85%,#080a0e);
       pointer-events:none;
     }
     .topbar, .view-header { display:flex; align-items:center; justify-content:space-between; gap:12px; }
@@ -199,8 +199,8 @@
     
     <!-- TELA INICIAL (HOME) -->
     <section id="home-view" class="view home-view active" aria-label="Início">
-     <!-- Imagem de fundo com a modelo posicionada corretamente -->
-     <img class="home-background" src="https://images.unsplash.com/photo-1512290900672-edec2c2a440d?auto=format&fit=crop&w=800&q=80" alt="Fundo de pele" loading="lazy">
+     <!-- Imagem de fundo com o rosto da modelo visível à direita -->
+     <img class="home-background" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80" alt="Fundo de pele" loading="lazy">
      <div class="home-shade" aria-hidden="true"></div>
      
      <header class="topbar">
@@ -265,7 +265,7 @@
       <span class="header-spacer" aria-hidden="true"></span>
      </header>
      <article class="glass-card analysis-photo">
-      <img src="https://images.unsplash.com/photo-1512290900672-edec2c2a440d?auto=format&fit=crop&w=800&q=80" alt="Análise de rosto" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80" alt="Análise de rosto" loading="lazy">
       <span class="scan-line" aria-hidden="true"></span>
      </article>
      <section class="glass-card score-card">
@@ -343,7 +343,7 @@
       <span class="header-spacer" aria-hidden="true"></span>
      </header>
      <section class="profile-top">
-      <img src="https://images.unsplash.com/photo-1512290900672-edec2c2a440d?auto=format&fit=crop&w=200&q=80" alt="Avatar" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80" alt="Avatar" loading="lazy">
       <div>
        <h2>Margo</h2>
        <p>Tipo de Pele: mista</p>
