@@ -7,16 +7,15 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Playfair+Display:wght@500;600&amp;display=swap" rel="stylesheet">
   <style>
     :root {
-      --ink: #07090e;
-      --line: rgba(255,255,255,.16);
-      --lilac: #e2d7ff;
-      --muted: #c9c5cf;
-      --panel: rgba(22,24,31,.65);
+      --ink: #0b0d13;
+      --line: rgba(255,255,255,.14);
+      --lilac: #dcd0ff;
+      --panel: rgba(18,20,28,.65);
       --shadow: 0 18px 42px rgba(0,0,0,.38);
     }
     * { box-sizing: border-box; }
     html, body { width:100%; min-height:calc(100 * min(var(--vh, 1vh), 1vh)); margin:0; }
-    body { background:#020307; color:#fff; font-family:"DM Sans",sans-serif; }
+    body { background:#07090e; color:#fff; font-family:"DM Sans",sans-serif; }
     button, input { font:inherit; }
     button { cursor:pointer; }
     button:focus-visible, input:focus-visible { outline:2px solid var(--lilac); outline-offset:3px; }
@@ -26,7 +25,7 @@
       min-height:calc(100 * min(var(--vh, 1vh), 1vh));
       display:grid;
       place-items:center;
-      background:radial-gradient(circle at 50% 8%,rgba(102,82,130,.28),transparent 31%),#020307;
+      background:#05070a;
     }
     .mobile-shell {
       position:relative;
@@ -34,31 +33,34 @@
       min-height:calc(100 * min(var(--vh, 1vh), 1vh));
       overflow:hidden;
       background:var(--ink);
-      box-shadow:0 0 60px rgba(0,0,0,.5);
+      box-shadow:0 0 60px rgba(0,0,0,.6);
     }
     .view {
       display:none;
       min-height:calc(100 * min(var(--vh, 1vh), 1vh));
-      padding:52px 19px 104px;
+      padding:48px 18px 104px;
       animation:reveal .32s ease both;
     }
     .view.active { display:block; }
     @keyframes reveal { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
 
     .home-view { position:relative; isolation:isolate; }
+    
+    /* Ajuste essencial para exibir o rosto da modelo perfeitamente à direita */
     .home-background {
       position:absolute; z-index:-3; inset:0; width:100%; height:100%;
-      /* Posicionamento exato para focar no rosto da modelo no lado direito */
-      object-fit:cover; object-position:85% 25%;
-      filter:saturate(.95) contrast(1.05) brightness(1.05);
+      object-fit:cover; object-position:82% 20%;
+      filter:brightness(1.05) contrast(1.05);
     }
+    
+    /* Gradiente que escurece o lado esquerdo para destacar os textos e deixa o lado direito com a modelo visível */
     .home-shade {
       position:absolute; z-index:-2; inset:0;
-      /* Gradiente mais leve para garantir que a modelo apareça bem nítida */
-      background:linear-gradient(90deg,rgba(4,6,11,.82),rgba(5,7,12,.35) 60%,rgba(5,7,12,.1)),
-                 linear-gradient(180deg,rgba(4,6,11,.15),transparent 35%,rgba(4,6,11,.82) 85%,#080a0e);
+      background:linear-gradient(90deg, rgba(7,9,14,0.96) 0%, rgba(7,9,14,0.85) 48%, rgba(7,9,14,0.2) 75%),
+                 linear-gradient(180deg, rgba(7,9,14,0.3) 0%, transparent 30%, rgba(7,9,14,0.9) 85%, #07090e 100%);
       pointer-events:none;
     }
+
     .topbar, .view-header { display:flex; align-items:center; justify-content:space-between; gap:12px; }
     .greeting-wrap { display:flex; align-items:center; gap:8px; }
     .heading-line { margin:0; letter-spacing:-.035em; font-size: 20px; font-weight: 600; }
@@ -68,12 +70,12 @@
     }
     .icon-control {
       display:grid; place-items:center; width:39px; height:39px; color:#fff;
-      border:1px solid var(--line); border-radius:50%; background:rgba(11,13,18,.56);
+      border:1px solid var(--line); border-radius:50%; background:rgba(18,20,28,.55);
       backdrop-filter:blur(14px); transition:.2s ease;
     }
     .icon-control:hover { color:var(--lilac); border-color:var(--lilac); transform:translateY(-2px); }
     .notification-popover {
-      position:absolute; z-index:6; top:98px; right:19px; width:190px; padding:12px 14px;
+      position:absolute; z-index:6; top:98px; right:18px; width:190px; padding:12px 14px;
       border:1px solid var(--line); border-radius:14px; background:rgba(18,20,28,.94);
       box-shadow:var(--shadow); backdrop-filter:blur(16px); opacity:0; pointer-events:none;
       transform:translateY(-7px); transition:.2s ease;
@@ -81,45 +83,47 @@
     .notification-popover.show { opacity:1; pointer-events:auto; transform:translateY(0); }
     .notification-popover p { margin:0; line-height:1.45; }
 
-    .intro { max-width:240px; margin-top:18px; }
-    .intro h1 { margin:0; letter-spacing:-.04em; line-height:1.3; font-size: 22px; font-weight: 500; color: #ddd9e4; }
+    .intro { max-width:220px; margin-top:14px; }
+    .intro h1 { margin:0; letter-spacing:-.04em; line-height:1.2; font-size: 20px; font-weight: 500; color: #dcd7e3; }
 
     .glass-card {
       border:1px solid var(--line); border-radius:21px; background:var(--panel);
       box-shadow:0 13px 28px rgba(0,0,0,.25); backdrop-filter:blur(16px);
     }
-    .scan-card { width:min(100%,280px); margin-top:18px; padding:13px 14px 14px; }
+    .scan-card { width:min(100%,265px); margin-top:14px; padding:12px 14px 14px; }
     .beta-pill {
       display:inline-flex; min-height:20px; align-items:center; padding:3px 10px; border-radius:999px;
-      border:1px solid rgba(255,255,255,.16); background:rgba(190,181,217,.17); font-size: 12px;
+      border:1px solid rgba(255,255,255,.16); background:rgba(190,181,217,.15); font-size: 12px;
     }
-    .scan-card h2 { margin:8px 0 1px; letter-spacing:-.04em; line-height:1.05; font-size: 18px; }
-    .scan-card p { margin:0; color:#c9c5ce; letter-spacing:-.02em; }
+    .scan-card h2 { margin:7px 0 1px; letter-spacing:-.04em; line-height:1.1; font-size: 16px; }
+    .scan-card p { margin:0; color:#c5c0cc; letter-spacing:-.02em; font-size: 13px; }
     .scan-action {
-      display:inline-flex; align-items:center; gap:7px; min-height:32px; margin-top:12px; padding:5px 10px 5px 6px;
-      border:0; border-radius:999px; background:linear-gradient(90deg,#d9d0ed,#c9bce7); color:#211d29;
-      transition:.2s ease; font-weight: 500;
+      display:inline-flex; align-items:center; gap:7px; min-height:32px; margin-top:10px; padding:5px 10px 5px 6px;
+      border:0; border-radius:999px; background:linear-gradient(90deg,#ded4f5,#c8bce4); color:#1d1827;
+      transition:.2s ease; font-weight: 500; font-size: 13px;
     }
     .scan-action:hover { transform:translateY(-2px); box-shadow:0 10px 18px rgba(0,0,0,.3); }
-    .scan-symbol { display:grid; place-items:center; width:21px; height:21px; border-radius:50%; background:rgba(62,55,78,.25); }
+    .scan-symbol { display:grid; place-items:center; width:21px; height:21px; border-radius:50%; background:rgba(55,48,72,.2); }
 
-    .lower-content { margin-top:28px; }
+    .lower-content { margin-top:18px; }
     .search-strip {
-      display:flex; align-items:center; gap:10px; min-height:42px; padding:0 13px; border:1px solid var(--line);
-      border-radius:999px; background:rgba(13,15,20,.66); box-shadow:0 10px 25px rgba(0,0,0,.18); backdrop-filter:blur(16px);
+      display:flex; align-items:center; gap:10px; min-height:40px; padding:0 13px; border:1px solid var(--line);
+      border-radius:999px; background:rgba(15,17,24,.6); box-shadow:0 10px 25px rgba(0,0,0,.18); backdrop-filter:blur(16px);
     }
-    .search-strip:focus-within { border-color:rgba(226,215,255,.85); }
-    .search-strip input { width:100%; border:0; outline:0; color:#fff; background:transparent; }
-    .search-strip input::placeholder { color:#d0cdd4; opacity:1; }
-    .section-header { display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin:14px 1px 10px; }
-    .section-header h2 { margin:0; letter-spacing:-.035em; font-size: 16px; font-weight: 500; }
-    .see-all { padding:0; border:0; color:#d3ced9; background:transparent; font-size: 13px; }
+    .search-strip:focus-within { border-color:rgba(220,208,255,.85); }
+    .search-strip input { width:100%; border:0; outline:0; color:#fff; background:transparent; font-size: 13px; }
+    .search-strip input::placeholder { color:#c7c2cd; opacity:1; }
+    
+    .section-header { display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin:14px 1px 8px; }
+    .section-header h2 { margin:0; letter-spacing:-.035em; font-size: 15px; font-weight: 500; }
+    .see-all { padding:0; border:0; color:#cbc5d2; background:transparent; font-size: 12px; }
     .see-all:hover { color:#fff; text-decoration:underline; }
+    
     .products-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-    .product-card { position:relative; min-height:115px; overflow:hidden; border:1px solid rgba(255,255,255,.19); border-radius:17px; background:#292a32; box-shadow:0 10px 20px rgba(0,0,0,.2); transition:.2s ease; }
+    .product-card { position:relative; min-height:105px; overflow:hidden; border:1px solid rgba(255,255,255,.16); border-radius:16px; background:#22242c; box-shadow:0 10px 20px rgba(0,0,0,.2); transition:.2s ease; }
     .product-card:hover { transform:translateY(-3px); }
     .product-card.filtered-out { display:none; }
-    .product-card::after { position:absolute; inset:0; content:""; background:linear-gradient(0deg,rgba(5,6,9,.75),transparent 60%); pointer-events:none; }
+    .product-card::after { position:absolute; inset:0; content:""; background:linear-gradient(0deg,rgba(5,6,9,.8),transparent 60%); pointer-events:none; }
     .product-card img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
     .product-name { position:absolute; z-index:1; left:10px; right:9px; bottom:9px; text-shadow:0 2px 9px #000; font-size: 12px; font-weight: 500; }
 
@@ -129,7 +133,7 @@
     .analysis-photo { position:relative; height:275px; margin-top:27px; overflow:hidden; border-radius:24px; }
     .analysis-photo img { width:100%; height:100%; object-fit:cover; object-position:center 28%; filter:brightness(.92) saturate(.8); }
     .analysis-photo::after { position:absolute; inset:0; content:""; background:linear-gradient(0deg,rgba(8,10,15,.8),transparent 65%); }
-    .scan-line { position:absolute; z-index:2; left:10%; right:10%; top:48%; height:1px; background:linear-gradient(90deg,transparent,#e2d7ff,transparent); box-shadow:0 0 16px #e2d7ff; animation:scan 2.8s ease-in-out infinite; }
+    .scan-line { position:absolute; z-index:2; left:10%; right:10%; top:48%; height:1px; background:linear-gradient(90deg,transparent,#dcd0ff,transparent); box-shadow:0 0 16px #dcd0ff; animation:scan 2.8s ease-in-out infinite; }
     @keyframes scan { 0%,100% { transform:translateY(-80px); opacity:.4; } 50% { transform:translateY(80px); opacity:1; } }
     .score-card { position:relative; margin-top:-19px; padding:22px 17px 18px; border-radius:22px; }
     .score-card h2 { margin:0; font-family:"Playfair Display",serif; }
@@ -152,8 +156,8 @@
     .routine-step img { width:54px; height:54px; border-radius:13px; object-fit:cover; }
     .routine-copy h3, .routine-copy p { margin:0; }
     .routine-copy p { margin-top:3px; color:#c7c3ce; line-height:1.35; }
-    .step-toggle { display:grid; place-items:center; width:31px; height:31px; border:1px solid rgba(226,215,255,.44); border-radius:50%; color:#e9e1ff; background:rgba(226,215,255,.1); }
-    .routine-step.is-done .step-toggle { color:#241d2c; background:#e2d7ff; }
+    .step-toggle { display:grid; place-items:center; width:31px; height:31px; border:1px solid rgba(220,208,255,.44); border-radius:50%; color:#eae1ff; background:rgba(220,208,255,.1); }
+    .routine-step.is-done .step-toggle { color:#201927; background:#dcd0ff; }
     .step-state-done { display:none; }
     .routine-step.is-done .step-state-pending { display:none; }
     .routine-step.is-done .step-state-done { display:inline; }
@@ -166,10 +170,10 @@
     .catalog-copy { padding:10px; }
     .catalog-copy h3, .catalog-copy p { margin:0; }
     .catalog-copy p { margin-top:3px; color:#c8c3ce; line-height:1.35; }
-    .catalog-tag { display:inline-block; margin-top:8px; padding:3px 7px; border-radius:99px; background:rgba(226,215,255,.13); color:#e3daf8; }
+    .catalog-tag { display:inline-block; margin-top:8px; padding:3px 7px; border-radius:99px; background:rgba(220,208,255,.13); color:#e1d6fb; }
 
     .profile-top { display:flex; align-items:center; gap:14px; margin:25px 0 18px; }
-    .profile-top img { width:78px; height:78px; object-fit:cover; border-radius:50%; border:2px solid rgba(226,215,255,.6); }
+    .profile-top img { width:78px; height:78px; object-fit:cover; border-radius:50%; border:2px solid rgba(220,208,255,.6); }
     .profile-top h2, .profile-top p { margin:0; }
     .profile-top p { margin-top:4px; color:#cec9d4; }
     .profile-stat { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
@@ -181,12 +185,12 @@
     .preference-row span { color:#d0cad8; }
 
     .bottom-navigation {
-      position:absolute; z-index:10; left:50%; bottom:13px; display:flex; align-items:center; justify-content:space-between;
-      width:calc(100% - 38px); max-width:340px; padding:7px 12px; border:1px solid var(--line); border-radius:23px;
-      background:rgba(11,13,18,.84); box-shadow:0 14px 28px rgba(0,0,0,.35); backdrop-filter:blur(17px); transform:translateX(-50%);
+      position:absolute; z-index:10; left:50%; bottom:12px; display:flex; align-items:center; justify-content:space-between;
+      width:calc(100% - 36px); max-width:340px; padding:6px 12px; border:1px solid var(--line); border-radius:23px;
+      background:rgba(18,20,28,.82); box-shadow:0 14px 28px rgba(0,0,0,.35); backdrop-filter:blur(17px); transform:translateX(-50%);
     }
-    .nav-button { display:grid; place-items:center; width:40px; height:34px; color:#d7d4dc; border:0; border-radius:12px; background:transparent; transition:.2s ease; }
-    .nav-button.active { color:#fff; background:rgba(226,215,255,.22); }
+    .nav-button { display:grid; place-items:center; width:40px; height:34px; color:#d2cfd8; border:0; border-radius:12px; background:transparent; transition:.2s ease; }
+    .nav-button.active { color:#fff; background:rgba(220,208,255,.2); }
     .nav-button:hover { color:#fff; }
     @media (max-width:360px) { .view { padding-inline:15px; } .bottom-navigation { width:calc(100% - 28px); padding-inline:8px; } .nav-button { width:36px; } }
   </style>
@@ -199,14 +203,14 @@
     
     <!-- TELA INICIAL (HOME) -->
     <section id="home-view" class="view home-view active" aria-label="Início">
-     <!-- Imagem de fundo com o rosto da modelo visível à direita -->
-     <img class="home-background" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80" alt="Fundo de pele" loading="lazy">
+     <!-- Modelo posicionada perfeitamente à direita, mantendo o rosto limpo -->
+     <img class="home-background" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1000&q=85" alt="Fundo de pele" loading="lazy">
      <div class="home-shade" aria-hidden="true"></div>
      
      <header class="topbar">
       <div class="greeting-wrap">
-       <span class="heading-line">Olá</span>
-       <span class="profile-orb" aria-hidden="true"><i data-lucide="sparkle" width="14"></i></span>
+       <span class="heading-line">Hey</span>
+       <span class="profile-orb" aria-hidden="true"><i data-lucide="user" width="13"></i></span>
        <span class="heading-line">Margo</span>
       </div>
       <button id="notification-button" class="icon-control" type="button" aria-label="Ver notificações" aria-expanded="false">
@@ -219,16 +223,15 @@
      </aside>
 
      <section class="intro">
-      <h1>Melhor pele, mais confiança!</h1>
+      <h1>Better skin, more confidence!</h1>
      </section>
 
      <article class="glass-card scan-card">
       <span class="beta-pill">Beta</span>
-      <h2>Entenda sua <strong>pele</strong> em profundidade</h2>
-      <p>Análise avançada</p>
+      <h2>Understand your <strong>skin</strong> in Depth</h2>
       <button id="scan-button" class="scan-action" type="button">
-       <span class="scan-symbol" aria-hidden="true"><i data-lucide="scan-face" width="13"></i></span>
-       <span>Escanear agora</span>
+       <span class="scan-symbol" aria-hidden="true"><i data-lucide="scan" width="13"></i></span>
+       <span>Scan now</span>
        <i data-lucide="chevron-right" width="14" aria-hidden="true"></i>
       </button>
      </article>
@@ -236,22 +239,22 @@
      <section class="lower-content" aria-label="Produtos recomendados">
       <label class="search-strip" for="home-product-search">
        <i data-lucide="search" width="14" aria-hidden="true"></i>
-       <input id="home-product-search" placeholder="O que você está procurando?" type="search" autocomplete="off">
+       <input id="home-product-search" placeholder="What are you looking for?" type="search" autocomplete="off">
       </label>
       
       <div class="section-header">
-       <h2>Melhor Solução em Produto</h2>
-       <button id="see-all-button" class="see-all" type="button">Mostrar tudo</button>
+       <h2>Best Solution Product</h2>
+       <button id="see-all-button" class="see-all" type="button">Show all</button>
       </div>
 
       <div class="products-grid">
-       <article class="product-card home-product" data-search="serum renovador renewal">
+       <article class="product-card home-product" data-search="facial soap serum">
         <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=300&q=80" alt="Sérum" loading="lazy">
-        <span class="product-name">Sérum Renovador</span>
+        <span class="product-name">Brightening Facial Soap</span>
        </article>
-       <article class="product-card home-product" data-search="creme barreira barrier">
+       <article class="product-card home-product" data-search="face cream">
         <img src="https://images.unsplash.com/photo-1608248597359-974052349079?auto=format&fit=crop&w=300&q=80" alt="Creme" loading="lazy">
-        <span class="product-name">Creme Barreira</span>
+        <span class="product-name">FACE CREAM</span>
        </article>
       </div>
      </section>
@@ -265,7 +268,7 @@
       <span class="header-spacer" aria-hidden="true"></span>
      </header>
      <article class="glass-card analysis-photo">
-      <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=800&q=80" alt="Análise de rosto" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1000&q=85" alt="Análise de rosto" loading="lazy">
       <span class="scan-line" aria-hidden="true"></span>
      </article>
      <section class="glass-card score-card">
@@ -324,10 +327,10 @@
       <input id="catalog-search" placeholder="Pesquisar produtos..." type="search" autocomplete="off">
      </label>
      <section class="catalog-grid" aria-label="Catálogo">
-      <article class="catalog-card catalog-product" data-search="serum renovador">
+      <article class="catalog-card catalog-product" data-search="facial soap">
        <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=300&q=80" alt="Sérum" loading="lazy">
        <div class="catalog-copy">
-        <h3>Sérum Renovador</h3>
+        <h3>Facial Soap</h3>
         <p>Tratamento noturno</p>
         <span class="catalog-tag">Recomendado</span>
        </div>
@@ -363,11 +366,11 @@
 
     <!-- NAVEGAÇÃO INFERIOR -->
     <nav class="bottom-navigation" aria-label="Navegação principal">
-     <button class="nav-button active" type="button" data-view="home-view" aria-label="Início" aria-pressed="true"><i data-lucide="house" width="16"></i></button> 
-     <button class="nav-button" type="button" data-view="analysis-view" aria-label="Análise" aria-pressed="false"><i data-lucide="scan-face" width="16"></i></button> 
-     <button class="nav-button" type="button" data-view="routine-view" aria-label="Rotina" aria-pressed="false"><i data-lucide="sparkles" width="16"></i></button> 
-     <button class="nav-button" type="button" data-view="catalog-view" aria-label="Produtos" aria-pressed="false"><i data-lucide="flask-conical" width="16"></i></button> 
-     <button class="nav-button" type="button" data-view="profile-view" aria-label="Perfil" aria-pressed="false"><i data-lucide="user-round" width="16"></i></button>
+     <button class="nav-button active" type="button" data-view="home-view" aria-label="Início" aria-pressed="true"><i data-lucide="home" width="16"></i></button> 
+     <button class="nav-button" type="button" data-view="analysis-view" aria-label="Análise" aria-pressed="false"><i data-lucide="activity" width="16"></i></button> 
+     <button class="nav-button" type="button" data-view="routine-view" aria-label="Rotina" aria-pressed="false"><i data-lucide="sparkle" width="16"></i></button> 
+     <button class="nav-button" type="button" data-view="catalog-view" aria-label="Produtos" aria-pressed="false"><i data-lucide="droplet" width="16"></i></button> 
+     <button class="nav-button" type="button" data-view="profile-view" aria-label="Perfil" aria-pressed="false"><i data-lucide="user" width="16"></i></button>
     </nav>
    </main>
   </div>
